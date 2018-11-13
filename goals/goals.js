@@ -54,7 +54,8 @@ class Goals {
         msg.channel.send(
             'Error: Winnie_Bot accepts IANA timezone identifiers only.' +
             ' For detailed information about IANA timezone identifiers, go' +
-            ' here: https://en.wikipedia.org/wiki/Tz_database'
+            ' here: https://en.wikipedia.org/wiki/Tz_database' +
+            'Example command: !timezone Australia/Sydney'
         );
         return false;
       }
@@ -98,14 +99,15 @@ class Goals {
     const goal = args.shift();
     let goalType = args.shift();
     if (goal === undefined || goal == '') {
-      msg.channel.send(msg.author + ', I need a goal to set!');
+      msg.channel.send(msg.author + ', Goal needs set. Example command: !set 1667');
     } else if (!Number.isInteger(Number(goal))) {
       msg.channel.send('Error: Your goal must be a whole number.');
     } else if (msg.author.id in goallist.goalList) {
       msg.channel.send(
           msg.author +
           ', you have already set a goal today. Use' +
-          ' the update commands to record your progress.'
+          ' the update commands to record your progress. ' +
+          'Example command: !update 180' 
       );
     } else {
       if (
