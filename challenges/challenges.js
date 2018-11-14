@@ -121,7 +121,9 @@ class Challenges {
         msg.channel.send(
             msg.author +
             ', you have left ' +
-            challengelist.challengeList[challengeID].displayName
+            challengelist.challengeList[challengeID].displayName +
+            ' :sob: '
+
         );
         conn.collection('challengeDB').update(
             {_id: parseInt(challengeID)},
@@ -135,7 +137,7 @@ class Challenges {
         );
       } else {
         msg.channel.send(
-            msg.author + ', you have not yet joined this' + ' challenge.'
+            msg.author + ', you have not yet joined this' + ' challenge. :mega:'
         );
       }
     } else {
@@ -157,11 +159,11 @@ class Challenges {
       start = 1;
     }
     if (!Number.isInteger(Number(words))) {
-      msg.channel.send('Error: Word goal must be a whole number.');
+      msg.channel.send('Error: Word goal must be a whole number. Example: !set 1667');
     } else if (isNaN(timeout)) {
       msg.channel.send('Error: Sprint duration must be a number.');
     } else if (isNaN(start)) {
-      msg.channel.send('Error: Time to start must be a number.');
+      msg.channel.send('Error: Time to start must be a number. Example: !set 1667');
     } else if (start > 30) {
       msg.channel.send(
           'Error: Sprints cannot start more than 30 minutes in the future.'
